@@ -8,3 +8,6 @@ distribute-*.tar.gz
 
 # OS files
 .DS_Store
+
+# local update script
+update.sh

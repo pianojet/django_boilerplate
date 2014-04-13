@@ -18,3 +18,7 @@ source venv/bin/activate
 export DJANGO_SETTINGS_MODULE=ufe.settings.dev
 
 pip install -r requirements.debug.txt
+
+sudo ln -s /opt/git/django_boilerplate/apache/vhost.development.conf /etc/apache2/sites-available/django_boilerplate
+
+sudo a2ensite django_boilerplate
