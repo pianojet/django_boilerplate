@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>boiler</title>
+
+		{% block script %}{% endblock %}
+
+		<link type="text/css" href="{{ STATIC_URL }}css/reset.css" rel="stylesheet" />
+		<link rel="stylesheet" href="{{ STATIC_URL }}css/master.css">
+
+		{% block style %}{% endblock %}
+
+	</head>
+	<body>
+		{% block sidenav %}
+		{% endblock %}
+
+		{% block content %}
+		{% endblock %}
+	</body>
+</html>
+

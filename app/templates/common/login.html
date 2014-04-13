@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+{% block style %}
+{% endblock %}
+
+{% block content %}
+<h1>Login</h1>
+    <form class="login" id="login_form" method="post" action="">
+        {% csrf_token %}
+        <div>
+	        <label for="id_username">Email:</label><br />
+            <input id="id_username" type="text" name="username" placeholder="name@domain.com" />
+            <div class="error">{{ form.username.errors }}</div>
+	    </div><br />
+	    <div>
+	        <label for="id_password">Password:</label><br />
+	        <input type="password" name="password" id="id_password" />
+			<div class="error">{{form.password.errors}}</div>
+	    </div>
+
+	    <div class="error_none">{{ form.non_field_errors }}</div>
+        <br />
+
+        <input type="submit" value="Login" />
+        <a href="{% url 'django.contrib.auth.views.password_reset' %}">Forgot Password?</a>
+    </form>
+</div>
+{% endblock %}
