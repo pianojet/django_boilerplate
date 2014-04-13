@@ -25,6 +25,7 @@ PROJECT_APPS = (
     'app.common',
 )
 
+LOGIN_REDIRECT_URL = "/"
 
 INSTALLED_APPS = (
     'django.contrib.admin',

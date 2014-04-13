@@ -22,3 +22,13 @@ pip install -r requirements.debug.txt
 sudo ln -s /opt/git/django_boilerplate/apache/vhost.development.conf /etc/apache2/sites-available/django_boilerplate
 
 sudo a2ensite django_boilerplate
+
+#<run mysql client>
+> create database app;
+
+./manage.py syncdb
+
+./manage.py migrate
+
+# can use runserver:
+./manage.py runserver solicon.me:8000
