@@ -4,6 +4,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^', include('app.common.urls')),
+    url(r'^$', 'django.views.generic.simple.redirect_to', {'url': '/public/'}),
+    url(r'^public/', include('app.common.urls'))
+    url(r'^your/', include('app.config.urls'))
     url(r'^admin/', include(admin.site.urls)),
 )

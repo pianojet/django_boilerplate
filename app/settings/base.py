@@ -26,6 +26,9 @@ PROJECT_APPS = (
 )
 
 LOGIN_REDIRECT_URL = "/"
+LOGIN_EXEMPT_URLS = (
+    '/robots.txt$',  # Only applicable to development (DEBUG)
+)
 
 INSTALLED_APPS = (
     'django.contrib.admin',

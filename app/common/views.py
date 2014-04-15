@@ -1,10 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import login as auth_login, logout as auth_logout
+from django.core.urlresolvers import reverse
 
-from app.common.forms import LoginForm
+from app.common.forms import LoginForm, SignupForm
+from ufe.common.login_required.decorator import login_not_required
 
-def home(request):
-    return render(request, 'common/home.html', {})
+def index(request):
+    return render(request, 'common/index.html', {})
 
 def login(request):
     message = ""
@@ -38,3 +40,29 @@ def login(request):
         form = LoginForm()
 
     return render(request, 'common/login.html', {'form': form, 'message': message})
+
+@login_not_required
+def logout(request):
+    auth_logout(request)
+    return HttpResponseRedirect(reverse('common_home'))
+
+
+@login_not_required
+def signup(request):
+  """
+  Create a login for a new customer.  
+  """
+
+  form = SignupForm()
+
+  if request.POST:
+    form = SignupForm(request.POST)
+    if form.is_valid():
+      u = User()
+      u.email = form.cleaned_data['email']
+      u.set_password(form.cleaned_data['password'])
+      u.save()
+      return HttpResponseRedirect(reverse('common_login'))
+
+  return render_auth(request, 'create_customer_login.html', {'Customer' : lCustomer,
+                                                             'form' : lForm})
